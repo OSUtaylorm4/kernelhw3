@@ -5,3 +5,21 @@ qemu-system-i386 -gdb tcp::5626 -S -nographic -kernel arch/x86/boot/bzImage -dri
 scp taylorm4@os-class.engr.oregonstate.edu:/scratch/spring2016/cs444-126/linux-yocto-3.14/drivers/block/hw3.ko .
 
 insmod hw3.ko
+
+fdisk /dev/sbd0
+
+n
+p
+<enter>
+<enter>
+<enter>
+w
+
+mkdir mnt
+mkfs -t ext2 /dev/sbd0p1
+mount /dev/sbd0p1 ~/mnt
+
+echo "hello" > /sys/module/hw3/parameters/crypto_key
+cat /sys/module/hw3/parameters/crypto_key
+
+dmesg //debug info
