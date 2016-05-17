@@ -2,3 +2,6 @@ source /scratch/opt/environment-setup-i586-poky-linux.csh
 
 qemu-system-i386 -gdb tcp::5626 -S -nographic -kernel arch/x86/boot/bzImage -drive file=core-image-lsb-sdk-qemux86.ext3,if=ide -enable-kvm -usb -localtime --no-reboot --append "root=/dev/hda rw console=ttyS0 debug"
 
+scp taylorm4@os-class.engr.oregonstate.edu:/scratch/spring2016/cs444-126/linux-yocto-3.14/drivers/block/hw3.ko .
+
+insmod hw3.ko
